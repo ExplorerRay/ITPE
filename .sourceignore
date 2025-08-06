@@ -8,3 +8,9 @@
 !/apps/
 !/clusters/
 !/infrastructure/
+!/manifests/
+
+# Exclude lab currently
+/manifests/**/overlays/lab/
+/apps/lab/
+/clusters/lab/

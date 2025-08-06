@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ollama-gpu
+  namespace: ollama
+spec:
+  chart:
+    spec:
+      version: ">=ollama-1.26.0"
+  values:
+    ollama:
+      gpu:
+        enabled: true
+        type: 'nvidia'
+        number: 1
+      # -- List of models to pull at container startup
+      models:
+        pull:
+          - falcon:7b
+          - mistral:7b
+          - llama2:7b
+          - llama3.2:1b
+          - gemma3:1b

@@ -1,16 +1,9 @@
-# flux2-kustomize-helm-example
+# ITPE
+LLM Inference Testbed for Performance & Energy
 
 [![test](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/test/badge.svg)](https://github.com/fluxcd/flux2-kustomize-helm-example/actions)
 [![e2e](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/e2e/badge.svg)](https://github.com/fluxcd/flux2-kustomize-helm-example/actions)
 [![license](https://img.shields.io/github/license/fluxcd/flux2-kustomize-helm-example.svg)](https://github.com/fluxcd/flux2-kustomize-helm-example/blob/main/LICENSE)
-
-For this example we assume a scenario with two clusters: staging and production.
-The end goal is to leverage Flux and Kustomize to manage both clusters while minimizing duplicated declarations.
-
-We will configure Flux to install, test and upgrade a demo app using
-`HelmRepository` and `HelmRelease` custom resources.
-Flux will monitor the Helm repository, and it will automatically
-upgrade the Helm releases to their latest chart version based on semver ranges.
 
 ## Prerequisites
 
@@ -45,7 +38,7 @@ The Git repository contains the following top directories:
 ```
 ├── apps
 │   ├── base
-│   ├── production 
+│   ├── production
 │   └── staging
 ├── infrastructure
 │   ├── configs
@@ -269,7 +262,7 @@ spec:
   wait: true
 ```
 
-Note that with `path: ./apps/staging` we configure Flux to sync the staging Kustomize overlay and 
+Note that with `path: ./apps/staging` we configure Flux to sync the staging Kustomize overlay and
 with `dependsOn` we tell Flux to create the infrastructure items before deploying the apps.
 
 Fork this repository on your personal GitHub account and export your GitHub access token, username and repo name:
@@ -306,7 +299,7 @@ Watch for the Helm releases being installed on staging:
 ```console
 $ watch flux get helmreleases --all-namespaces
 
-NAMESPACE    	NAME         	REVISION	SUSPENDED	READY	MESSAGE 
+NAMESPACE    	NAME         	REVISION	SUSPENDED	READY	MESSAGE
 cert-manager 	cert-manager 	v1.11.0 	False    	True 	Release reconciliation succeeded
 ingress-nginx	ingress-nginx	4.4.2   	False    	True 	Release reconciliation succeeded
 podinfo      	podinfo      	6.3.0   	False    	True 	Release reconciliation succeeded
@@ -341,11 +334,11 @@ Watch the production reconciliation:
 ```console
 $ flux get kustomizations --watch
 
-NAME             	REVISION     	SUSPENDED	READY	MESSAGE                         
-apps             	main/696182e	False    	True 	Applied revision: main/696182e	
-flux-system      	main/696182e	False    	True 	Applied revision: main/696182e	
-infra-configs    	main/696182e	False    	True 	Applied revision: main/696182e	
-infra-controllers	main/696182e	False    	True 	Applied revision: main/696182e	
+NAME             	REVISION     	SUSPENDED	READY	MESSAGE
+apps             	main/696182e	False    	True 	Applied revision: main/696182e
+flux-system      	main/696182e	False    	True 	Applied revision: main/696182e
+infra-configs    	main/696182e	False    	True 	Applied revision: main/696182e
+infra-controllers	main/696182e	False    	True 	Applied revision: main/696182e
 ```
 
 ## Add clusters
@@ -371,7 +364,7 @@ cp clusters/staging/apps.yaml clusters/dev
 ```
 
 You could create a dev overlay inside `apps`, make sure
-to change the `spec.path` inside `clusters/dev/apps.yaml` to `path: ./apps/dev`. 
+to change the `spec.path` inside `clusters/dev/apps.yaml` to `path: ./apps/dev`.
 
 Push the changes to the main branch:
 
@@ -439,7 +432,7 @@ Tell Flux to deploy the production workloads on the `production-clone` cluster:
 ```sh
 flux reconcile kustomization flux-system \
     --context=production-clone \
-    --with-source 
+    --with-source
 ```
 
 ## Testing

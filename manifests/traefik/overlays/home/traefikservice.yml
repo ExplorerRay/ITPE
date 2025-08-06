@@ -1,0 +1,11 @@
+kind: TraefikService
+metadata:
+  name: weighted-service
+  namespace: traefik
+spec:
+  weighted:
+    services:
+    - name: ollama
+      namespace: ollama
+      port: 11434
+      weight: 1

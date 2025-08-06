@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ollama
+  namespace: ollama
+spec:
+  chart:
+    spec:
+      version: ">=ollama-1.26.0"
+  values:
+    ollama:
+      gpu:
+        enabled: false
+      # -- List of models to pull at container startup
+      models:
+        pull:
+          - gemma3:1b

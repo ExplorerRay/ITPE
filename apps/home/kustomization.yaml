@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: podinfo
+namespace: ollama
 resources:
-  - ../base/podinfo
+  - ../base/ollama
 patches:
-  - path: podinfo-values.yaml
+  - path: ollama-values.yaml
     target:
       kind: HelmRelease

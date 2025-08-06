@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ollama
+  namespace: ollama
+spec:
+  releaseName: ollama
+  chart:
+    spec:
+      chart: ollama
+      sourceRef:
+        kind: HelmRepository
+        name: ollama-repo
+        namespace: flux-system
+  interval: 12h
+  install:
+    remediation:
+      retries: 3
+  # Default values
+  # https://github.com/otwld/ollama-helm/blob/main/values.yaml
+  values:
+    persistentVolume:
+      enabled: true
+      size: 16Gi
+      existingClaim: "ollama-pvc"

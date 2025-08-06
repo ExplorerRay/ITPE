@@ -7,10 +7,12 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: infra-configs
+    - name: infra-volumes
+    - name: manifests
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/staging
+  path: ./apps/home
   prune: true
   wait: true
   timeout: 5m0s
