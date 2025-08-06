@@ -9,7 +9,7 @@ spec:
       namespace: ollama
       port: 11434
       weight: 1
-    - name: ollama-cpu
+    - name: ollama
       namespace: ollama
       port: 11434
       weight: 1
