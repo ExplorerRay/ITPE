@@ -1,8 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: ollama-repo
-  namespace: flux-system
+  name: nvidia-repo
 spec:
   interval: 5m
-  url: https://helm.otwld.com/ollama
+  url: https://helm.ngc.nvidia.com/nvidia
