@@ -1,9 +1,9 @@
 # ITPE
 LLM Inference Testbed for Performance & Energy
 
-[![test](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/test/badge.svg)](https://github.com/fluxcd/flux2-kustomize-helm-example/actions)
-[![e2e](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/e2e/badge.svg)](https://github.com/fluxcd/flux2-kustomize-helm-example/actions)
-[![license](https://img.shields.io/github/license/fluxcd/flux2-kustomize-helm-example.svg)](https://github.com/fluxcd/flux2-kustomize-helm-example/blob/main/LICENSE)
+[![test](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/test/badge.svg)](https://github.com/ExplorerRay/ITPE/actions/workflows/test.yaml)
+[![e2e](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/e2e/badge.svg)](https://github.com/ExplorerRay/ITPE/actions/workflows/e2e.yaml)
+[![license](https://img.shields.io/github/license/fluxcd/flux2-kustomize-helm-example.svg)](https://github.com/ExplorerRay/ITPE/blob/main/LICENSE)
 
 ## Prerequisites
 
@@ -273,28 +273,27 @@ export GITHUB_USER=<your-username>
 export GITHUB_REPO=<repository-name>
 ```
 
-Verify that your staging cluster satisfies the prerequisites with:
+Verify that your home cluster satisfies the prerequisites with:
 
 ```sh
 flux check --pre
 ```
 
-Set the kubectl context to your staging cluster and bootstrap Flux:
+Bootstrap Flux with home cluster:
 
 ```sh
 flux bootstrap github \
-    --context=staging \
     --owner=${GITHUB_USER} \
     --repository=${GITHUB_REPO} \
     --branch=main \
     --personal \
-    --path=clusters/staging
+    --path=clusters/home
 ```
 
-The bootstrap command commits the manifests for the Flux components in `clusters/staging/flux-system` dir
+The bootstrap command commits the manifests for the Flux components in `clusters/home/flux-system` dir
 and creates a deploy key with read-only access on GitHub, so it can pull changes inside the cluster.
 
-Watch for the Helm releases being installed on staging:
+Watch for the Helm releases being installed on home:
 
 ```console
 $ watch flux get helmreleases --all-namespaces
@@ -443,4 +442,4 @@ a pull requests is merged into the main branch and synced on the cluster.
 This repository contains the following GitHub CI workflows:
 
 * the [test](./.github/workflows/test.yaml) workflow validates the Kubernetes manifests and Kustomize overlays with [kubeconform](https://github.com/yannh/kubeconform)
-* the [e2e](./.github/workflows/e2e.yaml) workflow starts a Kubernetes cluster in CI and tests the staging setup by running Flux in Kubernetes Kind
+* the [e2e](./.github/workflows/e2e.yaml) workflow starts a Kubernetes cluster in CI and tests the home setup by running Flux in Kubernetes Kind
