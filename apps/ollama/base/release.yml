@@ -16,3 +16,8 @@ spec:
       retries: 3
   # Default values
   # https://github.com/otwld/ollama-helm/blob/main/values.yaml
+  values:
+    persistentVolume:
+      enabled: true
+      size: 16Gi
+      existingClaim: "ollama-pvc"

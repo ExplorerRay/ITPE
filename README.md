@@ -1,10 +1,6 @@
 # ITPE
 LLM Inference Testbed for Performance & Energy
 
-[![test](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/test/badge.svg)](https://github.com/ExplorerRay/ITPE/actions/workflows/test.yaml)
-[![e2e](https://github.com/fluxcd/flux2-kustomize-helm-example/workflows/e2e/badge.svg)](https://github.com/ExplorerRay/ITPE/actions/workflows/e2e.yaml)
-[![license](https://img.shields.io/github/license/fluxcd/flux2-kustomize-helm-example.svg)](https://github.com/ExplorerRay/ITPE/blob/main/LICENSE)
-
 ## Prerequisites
 
 You will need a Kubernetes cluster version 1.28 or newer.

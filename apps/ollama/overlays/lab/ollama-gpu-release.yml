@@ -29,7 +29,3 @@ spec:
           - llama2:7b
           - llama3.2:1b
           - gemma3:1b
-    persistentVolume:
-      enabled: true
-      size: 16Gi
-      existingClaim: "ollama-pvc"

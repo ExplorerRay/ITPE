@@ -5,6 +5,8 @@ metadata:
   name: app-ollama
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: infra-volumes
   interval: 10m
   sourceRef:
     kind: GitRepository
