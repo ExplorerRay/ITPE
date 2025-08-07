@@ -7,7 +7,6 @@ metadata:
 spec:
   interval: 10m
   dependsOn:
-    - name: infra-volumes
     - name: manifests
   sourceRef:
     kind: GitRepository

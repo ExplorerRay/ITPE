@@ -4,9 +4,6 @@ metadata:
   name: ollama
   namespace: ollama
 spec:
-  chart:
-    spec:
-      version: ">=ollama-1.26.0"
   values:
     ollama:
       gpu:
@@ -19,3 +16,7 @@ spec:
           - llama2:7b
           - llama3.2:1b
           - gemma3:1b
+    persistentVolume:
+      enabled: true
+      size: 16Gi
+      existingClaim: "ollama-pvc"

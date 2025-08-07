@@ -34,6 +34,7 @@ jobs:
       - name: Verify cluster reconciliation
         run: |
           kubectl -n flux-system wait kustomization/infra-controllers --for=condition=ready --timeout=5m
+          kubectl -n flux-system wait kustomization/manifests --for=condition=ready --timeout=5m
       - name: Verify helm reconciliation
         run: |
           kubectl -n ollama wait helmrelease/ollama --for=condition=ready --timeout=5m
