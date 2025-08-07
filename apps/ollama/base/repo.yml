@@ -4,4 +4,4 @@ metadata:
   name: ollama-repo
 spec:
   interval: 5m
-  url: https://helm.otwld.com/ollama
+  url: https://helm.otwld.com/
