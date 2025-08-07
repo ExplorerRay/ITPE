@@ -23,7 +23,7 @@ metadata:
   name: metallb
   namespace: metallb-system
 spec:
-  interval: 30m
+  interval: 10m
   chart:
     spec:
       chart: metallb
@@ -31,12 +31,3 @@ spec:
         kind: HelmRepository
         name: metallb-repo
         namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: metallb-values
-      valuesKey: values.yaml
-    - kind: ConfigMap
-      name: metallb-values-override
-      valuesKey: values.yaml
-      optional: true
-

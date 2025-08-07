@@ -5,7 +5,7 @@ metadata:
   name: app-ollama
   namespace: flux-system
 spec:
-  interval: 1h
+  interval: 10m
   dependsOn:
     - name: infra-volumes
     - name: manifests

@@ -26,6 +26,6 @@ spec:
         kind: HelmRepository
         name: traefik-repo
         namespace: flux-system
-  interval: 6h
+  interval: 10m
   # Default values
   # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
