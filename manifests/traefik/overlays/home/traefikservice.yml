@@ -1,7 +1,6 @@
 kind: TraefikService
 metadata:
   name: weighted-service
-  namespace: traefik
 spec:
   weighted:
     services:
