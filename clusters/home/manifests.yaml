@@ -20,6 +20,7 @@ metadata:
 spec:
   dependsOn:
     - name: manifests-metallb
+    - name: app-ollama
   interval: 10m
   sourceRef:
     kind: GitRepository
