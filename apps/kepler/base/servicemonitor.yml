@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: kepler
     app.kubernetes.io/part-of: kepler
+    release: prometheus
 spec:
   selector:
     matchLabels:
