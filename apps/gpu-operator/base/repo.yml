@@ -3,5 +3,5 @@ kind: HelmRepository
 metadata:
   name: nvidia-repo
 spec:
-  interval: 5m
+  interval: 1h
   url: https://helm.ngc.nvidia.com/nvidia

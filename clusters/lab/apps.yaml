@@ -11,7 +11,23 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/gpu-operator/base
+  path: ./apps/gpu-operator/overlays/k0s
+  prune: true
+  timeout: 5m0s
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-kepler
+  namespace: flux-system
+spec:
+  interval: 10m
+  dependsOn:
+    - name: app-gpu-operator
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/kepler-old/base
   prune: true
   timeout: 5m0s
 ---

@@ -6,10 +6,6 @@ metadata:
 spec:
   weighted:
     services:
-    - name: ollama-gpu
-      namespace: ollama
-      port: 11434
-      weight: 1
     - name: ollama
       namespace: ollama
       port: 11434

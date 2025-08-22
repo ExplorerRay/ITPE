@@ -1,0 +1,13 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gpu-operator
+spec:
+  values:
+    operator:
+      defaultRuntime: containerd
+    toolkit:
+      env:
+        CONTAINERD_CONFIG: /etc/k0s/containerd.d/nvidia.toml
+        CONTAINERD_SOCKET: /run/k0s/containerd.sock
+        CONTAINERD_RUNTIME_CLASS: nvidia
