@@ -17,6 +17,7 @@ Any other Kubernetes setup will work as well though.
 In order to follow the guide you'll need a GitHub account and a
 [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 that can create repositories (check all permissions under `repo`).
+Or you can use fine-grained Github token following [this](https://fluxcd.io/flux/installation/bootstrap/github/#github-organization).
 
 Install the CLI by downloading precompiled binaries using a Bash script:
 
@@ -33,7 +34,7 @@ The clusters dir contains the Flux configuration (`home` and `lab`):
 ```sh
 export GITHUB_TOKEN=<your-token>
 export GITHUB_USER=<your-username>
-export GITHUB_REPO=<repository-name>
+export GITHUB_REPO=ITPE
 ```
 
 Verify that your home cluster satisfies the prerequisites with:
@@ -42,7 +43,19 @@ Verify that your home cluster satisfies the prerequisites with:
 flux check --pre
 ```
 
-Bootstrap Flux with home cluster:
+Bootstrap Flux with home cluster if using fine-grained Github token:
+
+```sh
+flux bootstrap github \
+    --token-auth \
+    --owner=${GITHUB_USER} \
+    --repository=${GITHUB_REPO} \
+    --branch=main \
+    --personal \
+    --path=clusters/home
+```
+
+Or using Github PAT:
 
 ```sh
 flux bootstrap github \
