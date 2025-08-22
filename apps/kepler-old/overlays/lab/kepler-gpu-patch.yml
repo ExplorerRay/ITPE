@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: kepler
+  name: kepler-old
   namespace: kepler
 spec:
   template:
