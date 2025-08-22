@@ -1,6 +1,13 @@
 # ITPE
 LLM Inference Testbed for Performance & Energy
 
+## Architecture
+![ITPE architecture](assets/ITPE.png)
+
+## Tested platform
+- Home cluster
+  - Debian 12 with k0s 1.32.4
+
 ## Prerequisites
 
 You will need a Kubernetes cluster version 1.28 or newer.
@@ -11,13 +18,7 @@ In order to follow the guide you'll need a GitHub account and a
 [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 that can create repositories (check all permissions under `repo`).
 
-Install the Flux CLI on macOS or Linux using Homebrew:
-
-```sh
-brew install fluxcd/tap/flux
-```
-
-Or install the CLI by downloading precompiled binaries using a Bash script:
+Install the CLI by downloading precompiled binaries using a Bash script:
 
 ```sh
 curl -s https://fluxcd.io/install.sh | sudo bash
@@ -179,25 +180,6 @@ spec:
 Note that with ` interval: 12h` we configure Flux to pull the Helm repository index every twelfth hours to check for updates.
 If the new chart version that matches the `1.x` semver range is found, Flux will upgrade the release.
 
-In **infrastructure/configs/** dir we have Kubernetes custom resources, such as the Let's Encrypt issuer:
-
-```yaml
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt
-spec:
-  acme:
-    # Replace the email address with your own contact email
-    email: fluxcdbot@users.noreply.github.com
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    privateKeySecretRef:
-      name: letsencrypt-nginx
-    solvers:
-      - http01:
-          ingress:
-            class: nginx
-```
 
 In **clusters/production/infrastructure.yaml** we replace the Let's Encrypt server value to point to the production API:
 
@@ -429,13 +411,3 @@ flux reconcile kustomization flux-system \
     --context=production-clone \
     --with-source
 ```
-
-## Testing
-
-Any change to the Kubernetes manifests or to the repository structure should be validated in CI before
-a pull requests is merged into the main branch and synced on the cluster.
-
-This repository contains the following GitHub CI workflows:
-
-* the [test](./.github/workflows/test.yaml) workflow validates the Kubernetes manifests and Kustomize overlays with [kubeconform](https://github.com/yannh/kubeconform)
-* the [e2e](./.github/workflows/e2e.yaml) workflow starts a Kubernetes cluster in CI and tests the home setup by running Flux in Kubernetes Kind
