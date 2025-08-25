@@ -41,7 +41,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/traefik/overlays/home
+  path: ./infrastructure/prom-operator/overlays/home
   prune: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
