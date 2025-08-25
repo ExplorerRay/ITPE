@@ -9,5 +9,5 @@ spec:
       runtimeClassName: "nvidia"
       containers:
       - args:
-        - -v=5
+        - -v=$(KEPLER_LOG_LEVEL)
         - -enable-gpu
