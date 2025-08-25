@@ -3,5 +3,7 @@ kind: Kustomization
 namespace: kepler
 resources:
   - ns.yml
-  - repo.yml
-  - release.yml
+  - rbac.yml
+  - ds.yml
+  - svc.yml
+  - servicemonitor.yml
