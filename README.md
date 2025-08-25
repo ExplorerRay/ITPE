@@ -10,6 +10,10 @@ LLM Inference Testbed for Performance & Energy
 
 ## Prerequisites
 
+### GPU support
+If you want to use GPU, please refer to `lab` cluster and install NVIDIA driver on your host first.
+
+### Kubernetes & Flux
 You will need a Kubernetes cluster version 1.28 or newer.
 For a quick local test, you can use [Kubernetes kind](https://kind.sigs.k8s.io/docs/user/quick-start/).
 Any other Kubernetes setup will work as well though.

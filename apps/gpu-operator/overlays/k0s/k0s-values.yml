@@ -4,10 +4,15 @@ metadata:
   name: gpu-operator
 spec:
   values:
+    driver:
+      enabled: false
     operator:
       defaultRuntime: containerd
     toolkit:
       env:
-        CONTAINERD_CONFIG: /etc/k0s/containerd.d/nvidia.toml
-        CONTAINERD_SOCKET: /run/k0s/containerd.sock
-        CONTAINERD_RUNTIME_CLASS: nvidia
+        - name: CONTAINERD_CONFIG
+          value: /etc/k0s/containerd.d/nvidia.toml
+        - name: CONTAINERD_SOCKET
+          value: /run/k0s/containerd.sock
+        - name: CONTAINERD_RUNTIME_CLASS
+          value: nvidia
