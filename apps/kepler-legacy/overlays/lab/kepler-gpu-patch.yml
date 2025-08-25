@@ -8,6 +8,7 @@ spec:
     spec:
       runtimeClassName: "nvidia"
       containers:
-      - args:
-        - -v=$(KEPLER_LOG_LEVEL)
-        - -enable-gpu
+      - name: kepler-exporter
+        args:
+          - -v=$(KEPLER_LOG_LEVEL)
+          - -enable-gpu
