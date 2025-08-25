@@ -73,7 +73,7 @@ flux bootstrap github \
 The bootstrap command commits the manifests for the Flux components in `clusters/home/flux-system` dir
 and creates a deploy key with read-only access on GitHub, so it can pull changes inside the cluster.
 
-Watch for the Helm releases being installed on home:
+<!-- Watch for the Helm releases being installed on home:
 
 ```console
 $ watch flux get helmreleases --all-namespaces
@@ -83,7 +83,7 @@ metallb-system  metallb         0.15.2          False           True
 monitoring      prometheus      76.4.1          False           True
 ollama          ollama          1.27.0          False           True
 traefik         traefik         37.0.0          False           True
-```
+``` -->
 
 Bootstrap Flux on lab by setting the context and path to your lab cluster:
 
