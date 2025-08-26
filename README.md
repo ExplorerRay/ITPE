@@ -7,6 +7,8 @@ LLM Inference Testbed for Performance & Energy
 ## Tested platform
 - Home cluster
   - Debian 12 with k0s 1.32.4
+- Lab cluster
+  - Ubuntu 24.04 with k0s 1.33.4
 
 ## Prerequisites
 
