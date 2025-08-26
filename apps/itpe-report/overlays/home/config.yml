@@ -1,0 +1,38 @@
+itpe_report:
+  prom_url: "http://10.5.6.101:9090" # Prometheus endpoint
+  artf_dir: "/artifacts"
+
+itpe_perf:
+  url: "10.5.6.102" # No iteration, LLM svc endpoint
+
+  enabled:
+    stream: true
+    checkpoint: false
+
+  models:
+    - "gemma3:1b"
+    - "llama3.2:1b"
+
+  concurrency:
+    - 1
+    - 2
+
+  requests:
+    run_count:
+      - 10
+
+  token_confs:
+    input:
+      - name: "input-S" # < 256
+        mean: 150
+        stddev: 15
+      - name: "input-M" # 256 - 1024
+        mean: 650
+        stddev: 50
+    output:
+      - name: "output-S" # < 100
+        mean: 50
+        stddev: 10
+      - name: "output-M" # 100 - 350
+        mean: 200
+        stddev: 20

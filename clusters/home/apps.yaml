@@ -28,3 +28,20 @@ spec:
   path: ./apps/kepler/base
   prune: true
   timeout: 5m0s
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-itpe-report
+  namespace: flux-system
+spec:
+  interval: 1h
+  dependsOn:
+    - name: app-ollama
+    - name: manifests-metallb
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/itpe-report/overlays/home
+  prune: true
+  timeout: 5m0s

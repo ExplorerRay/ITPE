@@ -1,0 +1,47 @@
+itpe_report:
+  prom_url: "http://192.168.0.156:9090" # Prometheus endpoint
+  artf_dir: "/artifacts"
+
+itpe_perf:
+  url: "192.168.0.157" # No iteration, LLM svc endpoint
+
+  enabled:
+    stream: true
+    checkpoint: false
+
+  models:
+    - "falcon:7b"
+    - "mistral:7b"
+    - "llama2:7b"
+
+  concurrency:
+    - 1
+    - 2
+    - 4
+    - 8
+
+  requests:
+    run_count:
+      - 50
+
+  token_confs:
+    input:
+      - name: "input-S" # < 256
+        mean: 150
+        stddev: 15
+      - name: "input-M" # 256 - 1024
+        mean: 650
+        stddev: 50
+      - name: "input-L" # <= 8192
+        mean: 1500
+        stddev: 100
+    output:
+      - name: "output-S" # < 100
+        mean: 50
+        stddev: 10
+      - name: "output-M" # 100 - 350
+        mean: 200
+        stddev: 20
+      - name: "output-L" # >= 350
+        mean: 450
+        stddev: 30
