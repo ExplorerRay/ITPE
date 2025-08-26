@@ -12,5 +12,6 @@ spec:
       # -- List of models to pull at container startup
       models:
         pull:
-          - llama3.2:1b
-          - gemma3:1b
+          - falcon:7b
+          - mistral:7b
+          - llama2:7b

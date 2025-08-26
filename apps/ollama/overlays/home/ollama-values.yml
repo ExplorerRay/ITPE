@@ -11,3 +11,4 @@ spec:
       models:
         pull:
           - gemma3:1b
+          - llama3.2:1b
