@@ -2,15 +2,18 @@
 LLM Inference Testbed for Performance & Energy
 
 ## Architecture
+ITPE consists of [Kepler legacy](https://github.com/sustainable-computing-io/kepler/tree/v0.9.0) for energy info, [ITPE-perf](https://github.com/ExplorerRay/ITPE-perf) which is revised from [perf_analyzer](https://github.com/triton-inference-server/perf_analyzer) for LLM performance metrics and [ITPE-report](https://github.com/ExplorerRay/ITPE-report) for aggregating these info then generating reports (some plots currently).
+
 ![ITPE architecture](assets/ITPE.png)
 
 ## Tested platform
-- Home cluster
-  - Debian 12 with k0s 1.32.4
 - Lab cluster
   - Ubuntu 24.04 with k0s 1.33.4
 
 ## Prerequisites
+
+### Kepler legacy (v0.9.0)
+If your node doesn't support ACPI (node), RAPL (CPU) and NVML (GPU), the energy metrics part won't work well when running the report tool.
 
 ### GPU support
 If you want to use GPU, please refer to `lab` cluster and install NVIDIA driver on your host first.
