@@ -3,15 +3,6 @@ kind: Kustomization
 
 resources:
   - ns.yml
-  - rbac.yml
-  - cm.yml
-  - ds.yml
-  - svc.yml
-  - servicemonitor.yml
   - prometheus-rbac.yml
-
-labels:
-  - includeSelectors: true
-    pairs:
-      app.kubernetes.io/name: kepler
-      app.kubernetes.io/part-of: kepler
+  - repo.yml
+  - release.yml
